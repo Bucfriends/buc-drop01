@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>"BUC" | DROP 01</title>
     
+    <!-- Fonte parecida com a Typeka para o teste -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
@@ -16,8 +17,8 @@
         /* Topo da marca com a LOGO */
         header { text-align: center; padding: 25px; border-bottom: 1px solid #1C1C1E; display: flex; justify-content: center; align-items: center; }
         
-        /* Controle do tamanho da logo (ajuste o max-height se quiser maior ou menor) */
-        .logo-img { max-height: 40px; width: auto; object-fit: contain; }
+        /* A MÁGICA ESTÁ AQUI: filter: invert(1) transforma a logo preta em branca! */
+        .logo-img { max-height: 40px; width: auto; object-fit: contain; filter: invert(1); }
         
         /* Área do vídeo e botão */
         .media-container { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: #050505; padding: 20px; }
@@ -46,7 +47,8 @@
 <body>
     
     <header>
-        <img src="logo.png" alt="BUC Logo" class="logo-img">
+        <!-- AQUI ESTÁ A SUA LOGO COM O NOME EXATO -->
+        <img src="IMG_8492.jpeg" alt="BUC Logo" class="logo-img">
     </header>
     
     <div class="media-container">
@@ -79,4 +81,3 @@
 
 </body>
 </html>
-
