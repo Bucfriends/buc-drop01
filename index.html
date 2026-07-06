@@ -3,13 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUC | DROP 01</title>
+    <title>"BUC" | DROP 01</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background-color: #000000; color: #FFFFFF; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; display: flex; flex-direction: column; height: 100vh; border: 1px solid #1C1C1E; }
+        body { background-color: #000000; color: #FFFFFF; font-family: 'Special Elite', monospace; display: flex; flex-direction: column; height: 100vh; border: 1px solid #1C1C1E; }
         
-        /* Topo da marca */
-        header { text-align: center; padding: 25px; border-bottom: 1px solid #1C1C1E; font-size: 28px; font-weight: bold; letter-spacing: 6px; text-transform: uppercase; }
+        /* Topo da marca com a LOGO */
+        header { text-align: center; padding: 25px; border-bottom: 1px solid #1C1C1E; display: flex; justify-content: center; align-items: center; }
+        
+        /* Controle do tamanho da logo (ajuste o max-height se quiser maior ou menor) */
+        .logo-img { max-height: 40px; width: auto; object-fit: contain; }
         
         /* Área do vídeo e botão */
         .media-container { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: #050505; padding: 20px; }
@@ -17,39 +25,40 @@
         /* Área de captura */
         .capture-area { padding: 40px 20px; text-align: center; background-color: #000000; border-top: 1px solid #1C1C1E; }
         
-        /* Frase Opção 1 */
         .capture-area h1 { font-size: 11px; font-weight: normal; letter-spacing: 2px; line-height: 1.8; margin-bottom: 25px; color: #AAAAAA; text-transform: uppercase; }
         
-        /* Inputs e Botões Formulario */
-        input[type="email"] { background-color: transparent; border: 1px solid #333; color: #FFF; padding: 15px; width: 100%; max-width: 400px; text-align: center; margin-bottom: 10px; outline: none; letter-spacing: 1px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+        /* Inputs e Botões */
+        input[type="email"] { background-color: transparent; border: 1px solid #333; color: #FFF; padding: 15px; width: 100%; max-width: 400px; text-align: center; margin-bottom: 10px; outline: none; letter-spacing: 1px; font-family: 'Special Elite', monospace; }
         input[type="email"]:focus { border-color: #FFF; }
         
-        .btn-submit { background-color: #FFFFFF; color: #000000; border: none; padding: 15px; font-weight: bold; cursor: pointer; width: 100%; max-width: 400px; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+        .btn-submit { background-color: #FFFFFF; color: #000000; border: none; padding: 15px; font-weight: bold; cursor: pointer; width: 100%; max-width: 400px; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; font-family: 'Special Elite', monospace; }
         .btn-submit:hover { background-color: #CCCCCC; }
         
-        /* Botão Reveal Yugen */
-        #revealBtn { background-color: transparent; border: 1px solid #FFF; color: #FFF; padding: 15px 30px; font-size: 12px; letter-spacing: 2px; cursor: pointer; text-transform: uppercase; transition: 0.3s; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+        /* Botão Yugen */
+        #revealBtn { background-color: transparent; border: 1px solid #FFF; color: #FFF; padding: 15px 30px; font-size: 20px; letter-spacing: 4px; cursor: pointer; transition: 0.3s; font-family: 'Special Elite', monospace; }
         #revealBtn:hover { background-color: #FFF; color: #000; }
         
-        /* Vídeo do Produto (escondido no inicio) */
+        /* Vídeo e Conceito */
         #productVideo { display: none; width: 100%; max-width: 350px; border: 1px solid #333; outline: none; }
+        #yugenConcept { display: none; margin-top: 15px; font-size: 11px; color: #888888; max-width: 350px; text-align: center; line-height: 1.6; letter-spacing: 1px; text-transform: uppercase; }
     </style>
 </head>
 <body>
     
-    <header>BUC</header>
+    <header>
+        <img src="logo.png" alt="BUC Logo" class="logo-img">
+    </header>
     
     <div class="media-container">
-        <!-- Botão interativo -->
-        <button id="revealBtn" onclick="revealProduct()">[ REVELAR ESTRUTURA ]</button>
-        
-        <!-- Local do VÍDEO COM O NOME EXATO DO SEU IPHONE -->
+        <button id="revealBtn" onclick="revealProduct()">[ 幽玄 ]</button>
         <video id="productVideo" src="IMG_9221.mov" playsinline controls></video>
+        <div id="yugenConcept">
+            <strong>幽玄 (YŪGEN):</strong> Uma consciência profunda e misteriosa da beleza do universo. O sentimento que não pode ser traduzido em palavras.
+        </div>
     </div>
 
     <div class="capture-area">
         <h1>FORMA, FUNÇÃO E FUNDAMENTO.<br>A NOSSA PRIMEIRA ESTRUTURA.</h1>
-        
         <form action="https://formspree.io/f/mqkopwlo" method="POST">
             <input type="email" name="email" placeholder="SEU E-MAIL" required>
             <button type="submit" class="btn-submit">FAZER PARTE</button>
@@ -59,11 +68,15 @@
     <script>
         function revealProduct() {
             var video = document.getElementById('productVideo');
-            document.getElementById('revealBtn').style.display = 'none';
+            var concept = document.getElementById('yugenConcept');
+            var btn = document.getElementById('revealBtn');
+            btn.style.display = 'none';
             video.style.display = 'block';
+            concept.style.display = 'block';
             video.play();
         }
     </script>
 
 </body>
 </html>
+
