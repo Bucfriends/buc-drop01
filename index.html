@@ -3,81 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>"BUC" | DROP 01</title>
-    
-    <!-- Fonte parecida com a Typeka para o teste -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>BUC</title>
     <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
-    
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background-color: #000000; color: #FFFFFF; font-family: 'Special Elite', monospace; display: flex; flex-direction: column; height: 100vh; border: 1px solid #1C1C1E; }
+        body { background: #000; color: #fff; font-family: 'Special Elite', cursive; display: flex; flex-direction: column; min-height: 100vh; }
         
-        /* Topo da marca com a LOGO */
-        header { text-align: center; padding: 25px; border-bottom: 1px solid #1C1C1E; display: flex; justify-content: center; align-items: center; }
+        header { padding: 40px; text-align: center; border-bottom: 1px solid #333; }
+        .logo-img { max-height: 40px; filter: invert(1); }
         
-        /* A MÁGICA ESTÁ AQUI: filter: invert(1) transforma a logo preta em branca! */
-        .logo-img { max-height: 40px; width: auto; object-fit: contain; filter: invert(1); }
+        .main { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
         
-        /* Área do vídeo e botão */
-        .media-container { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: #050505; padding: 20px; }
+        #btn-reveal { background: none; border: 1px solid #fff; color: #fff; padding: 20px 40px; cursor: pointer; font-size: 16px; letter-spacing: 5px; transition: 0.3s; font-family: 'Special Elite', cursive; text-transform: uppercase; }
+        #btn-reveal:hover { background: #fff; color: #000; }
         
-        /* Área de captura */
-        .capture-area { padding: 40px 20px; text-align: center; background-color: #000000; border-top: 1px solid #1C1C1E; }
+        #content { display: none; text-align: center; }
+        video { width: 100%; max-width: 400px; margin-bottom: 20px; border: 1px solid #333; }
         
-        .capture-area h1 { font-size: 11px; font-weight: normal; letter-spacing: 2px; line-height: 1.8; margin-bottom: 25px; color: #AAAAAA; text-transform: uppercase; }
+        .manifesto { font-size: 12px; color: #aaa; max-width: 350px; line-height: 1.8; text-transform: uppercase; margin-bottom: 40px; letter-spacing: 1px; }
         
-        /* Inputs e Botões */
-        input[type="email"] { background-color: transparent; border: 1px solid #333; color: #FFF; padding: 15px; width: 100%; max-width: 400px; text-align: center; margin-bottom: 10px; outline: none; letter-spacing: 1px; font-family: 'Special Elite', monospace; }
-        input[type="email"]:focus { border-color: #FFF; }
-        
-        .btn-submit { background-color: #FFFFFF; color: #000000; border: none; padding: 15px; font-weight: bold; cursor: pointer; width: 100%; max-width: 400px; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; font-family: 'Special Elite', monospace; }
-        .btn-submit:hover { background-color: #CCCCCC; }
-        
-        /* Botão Yugen */
-        #revealBtn { background-color: transparent; border: 1px solid #FFF; color: #FFF; padding: 15px 30px; font-size: 20px; letter-spacing: 4px; cursor: pointer; transition: 0.3s; font-family: 'Special Elite', monospace; }
-        #revealBtn:hover { background-color: #FFF; color: #000; }
-        
-        /* Vídeo e Conceito */
-        #productVideo { display: none; width: 100%; max-width: 350px; border: 1px solid #333; outline: none; }
-        #yugenConcept { display: none; margin-top: 15px; font-size: 11px; color: #888888; max-width: 350px; text-align: center; line-height: 1.6; letter-spacing: 1px; text-transform: uppercase; }
+        .footer { padding: 40px; border-top: 1px solid #333; text-align: center; }
+        input { background: none; border: 1px solid #333; color: #fff; padding: 15px; width: 100%; max-width: 300px; text-align: center; margin-bottom: 10px; font-family: 'Special Elite', cursive; }
+        button[type="submit"] { background: #fff; border: none; padding: 15px 30px; cursor: pointer; text-transform: uppercase; font-weight: bold; font-family: 'Special Elite', cursive; }
     </style>
 </head>
 <body>
-    
     <header>
-        <!-- AQUI ESTÁ A SUA LOGO COM O NOME EXATO -->
-        <img src="IMG_8492.jpeg" alt="BUC Logo" class="logo-img">
+        <img src="IMG_8492.jpeg" alt="BUC" class="logo-img">
     </header>
     
-    <div class="media-container">
-        <button id="revealBtn" onclick="revealProduct()">[ 幽玄 ]</button>
-        <video id="productVideo" src="IMG_9221.mov" playsinline controls></video>
-        <div id="yugenConcept">
-            <strong>幽玄 (YŪGEN):</strong> Uma consciência profunda e misteriosa da beleza do universo. O sentimento que não pode ser traduzido em palavras.
+    <div class="main">
+        <button id="btn-reveal" onclick="reveal()">[ ABRIR ]</button>
+        <div id="content">
+            <video id="vid" src="IMG_9221.mov" playsinline controls></video>
+            <p class="manifesto">EXISTE UMA ESTRUTURA POR TRÁS DE CADA MUDANÇA. O NEW EU NÃO É SOBRE O QUE VOCÊ DEIXOU PARA TRÁS, MAS SOBRE O QUE VOCÊ DECIDIU SE TORNAR A PARTIR DO QUE ANTES ERA INVISÍVEL AO SEU OLHAR. “BUC”</p>
         </div>
     </div>
 
-    <div class="capture-area">
-        <h1>FORMA, FUNÇÃO E FUNDAMENTO.<br>A NOSSA PRIMEIRA ESTRUTURA.</h1>
+    <div class="footer">
         <form action="https://formspree.io/f/mqkopwlo" method="POST">
             <input type="email" name="email" placeholder="SEU E-MAIL" required>
-            <button type="submit" class="btn-submit">FAZER PARTE</button>
+            <br>
+            <button type="submit">SOLICITAR ACESSO</button>
         </form>
     </div>
 
     <script>
-        function revealProduct() {
-            var video = document.getElementById('productVideo');
-            var concept = document.getElementById('yugenConcept');
-            var btn = document.getElementById('revealBtn');
-            btn.style.display = 'none';
-            video.style.display = 'block';
-            concept.style.display = 'block';
-            video.play();
+        function reveal() {
+            document.getElementById('btn-reveal').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+            document.getElementById('vid').play();
         }
     </script>
-
 </body>
 </html>
